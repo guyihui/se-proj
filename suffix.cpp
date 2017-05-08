@@ -45,19 +45,27 @@ int main() {
 
 	stack<string> suff;
 	suffix = "";
+	cout << endl << "query a suffix: ";
 	cin >> suffix;
 	infile.open("EnglishWords.txt", ios::in);
 
-	string word;
+	word="";
 	while (getline(infile, word)) {
-		if (word.substr(word.length() - num, num) == suffix) {
-			suff.push(word);
+		if (word.length() < suffix.length()){}
+		else {
+			string word1 = word;
+			if (word1.substr(word.length() - suffix.length(), suffix.length()) == suffix) {
+				suff.push(word);
+			}
 		}
 	}
-
+	cout << endl;
+	while (suff.size()) {
+		cout << suff.top() << endl;
+		suff.pop();
+	}
 
 	cin.get();
 	cin.get();
-
 	return 0;
 }
